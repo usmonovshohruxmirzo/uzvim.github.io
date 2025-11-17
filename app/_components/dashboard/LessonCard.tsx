@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { CheckCircle, Star, Copy, Terminal, Book } from 'lucide-react';
-import {  LessonCardProps } from '@/types';
+import { CheckCircle, Star, Copy, Terminal, Book, CircleQuestionMark } from 'lucide-react';
+import { LessonCardProps } from '@/types';
+import VimEditor from './editor/VimEditor';
 
 const LessonCard: React.FC<LessonCardProps> = ({
   lesson,
@@ -17,9 +18,8 @@ const LessonCard: React.FC<LessonCardProps> = ({
     <article className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 transition-all">
       <div className="flex flex-col sm:flex-row sm:items-start gap-4">
         <div className="flex items-start gap-3 sm:gap-4">
-          <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center font-bold shrink-0 ${
-            isCompleted ? 'bg-[#FC4850] text-white' : 'bg-gray-100 text-gray-600'
-          }`}>
+          <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center font-bold shrink-0 ${isCompleted ? 'bg-[#FC4850] text-white' : 'bg-gray-100 text-gray-600'
+            }`}>
             {isCompleted ? <CheckCircle size={20} /> : <span className="text-base lg:text-lg">{index + 1}</span>}
           </div>
         </div>
@@ -85,13 +85,27 @@ const LessonCard: React.FC<LessonCardProps> = ({
             </div>
           )}
 
+          <div className="bg-gray-50 rounded-lg p-3 lg:p-4 mb-4">
+            <h4 className="text-sm lg:text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
+              <button
+                type="button"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors shrink-0 cursor-pointer"
+                onClick={() => alert("Eslatma: Ba'zi commands (:help, :w, :q) faqat real terminal Vimda ishlaydi!")}
+              >
+                <CircleQuestionMark />
+              </button>
+              Vimni sinab ko‘rishingiz mumkin, yuklamasdan!
+
+            </h4>
+            <VimEditor />
+          </div>
+
           <button
             onClick={() => toggleLesson(lesson.id)}
-            className={`w-full sm:w-auto px-4 py-2.5 rounded-lg font-medium text-sm lg:text-base transition-all cursor-pointer ${
-              isCompleted
-                ? 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                : 'bg-[#FC4850] text-white hover:bg-[#e03e45] shadow-md'
-            }`}
+            className={`w-full sm:w-auto px-4 py-2.5 rounded-lg font-medium text-sm lg:text-base transition-all cursor-pointer ${isCompleted
+              ? 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              : 'bg-[#FC4850] text-white hover:bg-[#e03e45]'
+              }`}
           >
             {isCompleted ? 'Bajarildi' : 'Bajarilgan deb belgilash'}
           </button>
