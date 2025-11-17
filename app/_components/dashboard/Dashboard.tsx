@@ -5,6 +5,7 @@ import LessonCard from './LessonCard';
 import content from '@/data/contents';
 import Tips from '../sections/Tips/Tips';
 import Resources from '../sections/Resources/Resources';
+import { Menu } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const [selectedConcept, setSelectedConcept] = useState<string>('basics');
@@ -51,8 +52,8 @@ const Dashboard: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen bg-gray-50">
       <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-          <span>Menu</span>
+        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-black cursor-pointer">
+          <span><Menu/></span>
         </button>
         <h1 className="text-lg font-bold text-gray-800">O&apos;zbekcha Vim</h1>
         <div className="w-10" />
