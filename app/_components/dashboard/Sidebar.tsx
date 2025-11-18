@@ -34,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div className="flex items-center gap-3">
             <Image src="/logo.png" width={50} height={40} alt="logo" />
             <div className="flex flex-col">
-              <span className="text-xl lg:text-2xl font-bold text-gray-800">
+              <span className="text-md lg:text-2xl font-bold text-gray-800">
                 O&apos;zbekcha Vim
               </span>
               <p className="text-xs lg:text-sm text-gray-500 mt-1">
@@ -67,7 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 setSidebarOpen(false);
               }}
               className={`w-full flex items-center gap-3 px-3 py-2.5 lg:py-3 rounded-lg mb-2 transition-all cursor-pointer ${isActive
-                ? 'bg-[#FC4850] text-white shadow-lg'
+                ? 'bg-[#FC4850] text-white'
                 : 'text-gray-700 hover:bg-red-50 hover:text-[#FC4850]'
                 }`}
             >
