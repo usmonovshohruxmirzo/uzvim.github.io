@@ -15,11 +15,14 @@ interface Content {
   [key: string]: {
     title: string;
     lessons: Lesson[];
+    editor: boolean;
   };
 }
+
 const content: Content = {
   basics: {
     title: 'Vim asoslari',
+    editor: false,
     lessons: [
       {
         id: 'b1',
@@ -72,8 +75,33 @@ const content: Content = {
       }
     ]
   },
+  nitrovim: {
+    title: 'NitroVim o‘rnatish',
+    editor: false,
+    lessons: [
+      {
+        id: 'i1',
+        title: 'NitroVim nima?',
+        desc: 'NitroVim — bu kuchli, yuqori optimizatsiyalangan Vim distributsiya.',
+        doc: 'NitroVim — bu tezlik, soddalik va samaradorlikka yo‘naltirilgan shaxsiy Vim distributsiyasi. Unda pluginlar, performant konfiguratsiya va shaxsiy sozlamalar mavjud.'
+      },
+      {
+        id: 'i2',
+        title: 'O‘rnatish',
+        desc: 'Windows va Unix tizimlarida NitroVimni o‘rnatish juda oson.',
+        commands: [
+          { cmd: 'winget install Neovim.Neovim', desc: 'Neovim ni o\'rnatish' },
+          { cmd: 'git clone https://github.com/usmonovshohruxmirzo/nitrovim "$env:LOCALAPPDATA\\nvim"', desc: 'Windows (PowerShell)' },
+          { cmd: 'git clone https://github.com/usmonovshohruxmirzo/nitrovim ~/.config/nvim', desc: 'Linux/MacOS' },
+          { cmd: 'nvim', desc: 'NitroVim ishga tushirish' }
+        ],
+        doc: 'Unix tizimlarda NitroVim avtomatik tarzda ~/.config/nvim yoki ~/.vim kataloglariga o‘rnatiladi. Skript barcha pluginlarni o‘rnatadi va konfiguratsiyani sozlaydi.'
+      }
+    ],
+  },
   modes: {
     title: 'Vim rejimlari',
+    editor: false,
     lessons: [
       {
         id: 'm1',
@@ -130,6 +158,7 @@ const content: Content = {
   },
   navigation: {
     title: 'Navigatsiya',
+    editor: false,
     lessons: [
       {
         id: 'n1',
@@ -191,6 +220,7 @@ const content: Content = {
     ]
   },
   editing: {
+    editor: false,
     title: 'Tahrirlash',
     lessons: [
       {
@@ -253,6 +283,7 @@ const content: Content = {
   },
   search: {
     title: 'Qidiruv va almashtirish',
+    editor: false,
     lessons: [
       {
         id: 's1',
@@ -299,6 +330,7 @@ const content: Content = {
   },
   files: {
     title: 'Fayl bilan ishlash',
+    editor: false,
     lessons: [
       {
         id: 'f1',
@@ -360,6 +392,7 @@ const content: Content = {
   },
   advanced: {
     title: 'Ilg\'or imkoniyatlar',
+    editor: false,
     lessons: [
       {
         id: 'a1',
@@ -416,6 +449,7 @@ const content: Content = {
   },
   neovim: {
     title: 'Neovim - zamonaviy Vim',
+    editor: false,
     lessons: [
       {
         id: 'nv1',
@@ -469,6 +503,7 @@ const content: Content = {
   },
   cheatsheet: {
     title: 'Cheatsheet - Tez havolalar',
+    editor: false,
     lessons: [
       {
         id: 'cs1',
