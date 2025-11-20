@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Star, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import concepts from '@/data/concepts';
 import content from '@/data/contents';
 import Image from 'next/image';
@@ -12,7 +12,6 @@ const Sidebar: React.FC<SidebarProps> = ({
   selectedConcept,
   setSelectedConcept,
   completedLessons,
-  favorites,
   sidebarOpen,
   setSidebarOpen
 }) => {
@@ -86,13 +85,6 @@ const Sidebar: React.FC<SidebarProps> = ({
           );
         })}
       </nav>
-
-      {/* <div className="p-4 border-t border-gray-200"> */}
-      {/*   <div className="flex items-center gap-2 text-sm"> */}
-      {/*     <Star size={16} className="text-[#FC4850]" /> */}
-      {/*     <span className="text-gray-600">{favorites.size} sevimli</span> */}
-      {/*   </div> */}
-      {/* </div> */}
 
       <div className="p-3">
         <div className="mt-4 p-3 bg-red-50 rounded-lg">
