@@ -66,12 +66,12 @@ const Sidebar: React.FC<SidebarProps> = ({
                 setSidebarOpen(false);
               }}
               className={`w-full flex items-center gap-3 px-3 py-2.5 lg:py-3 rounded-lg mb-2 transition-all cursor-pointer ${isActive
-                ? 'bg-[#FC4850] text-white'
-                : 'text-gray-700 hover:bg-red-50 hover:text-[#FC4850]'
+                ? 'bg-[#309C34] text-white'
+                : 'text-gray-700 hover:bg-green-50 hover:text-[#309C34]'
                 }`}
             >
-              <div className={`p-2 rounded-lg ${isActive ? 'bg-white/20' : 'bg-red-100'}`}>
-                <Icon size={18} className={isActive ? 'text-white' : 'text-[#FC4850]'} />
+              <div className={`p-2 rounded-lg ${isActive ? 'bg-white/20' : 'bg-green-100'}`}>
+                <Icon size={18} className={isActive ? 'text-white' : 'text-[#309C34]'} />
               </div>
               <div className="flex-1 text-left">
                 <span className="font-medium block text-sm lg:text-base">{concept.title}</span>
@@ -87,14 +87,14 @@ const Sidebar: React.FC<SidebarProps> = ({
       </nav>
 
       <div className="p-3">
-        <div className="mt-4 p-3 bg-red-50 rounded-lg">
+        <div className="mt-4 p-3 bg-green-50 rounded-lg">
           <div className="flex justify-between items-center mb-1">
             <span className="text-xs font-semibold text-gray-600">Umumiy progress</span>
-            <span className="text-xs font-bold text-[#FC4850]">{totalProgress}%</span>
+            <span className="text-xs font-bold text-[#309C34]">{totalProgress}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className="bg-[#FC4850] h-2 rounded-full transition-all duration-500"
+              className="bg-[#309C34] h-2 rounded-full transition-all duration-500"
               style={{ width: `${totalProgress}%` }}
             />
           </div>

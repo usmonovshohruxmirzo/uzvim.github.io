@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import LessonCard from './LessonCard';
@@ -59,7 +60,7 @@ const Dashboard: React.FC = () => {
         <div className="w-10" />
       </div>
 
-      <div className="p-3 border-t border-gray-200 absolute top-2 right-3 rounded-xl bg-[#FC4850] hover:bg-[#e03e45] cursor-pointer transition-all">
+      <div className="p-3 border-t border-gray-200 absolute top-2 right-3 rounded-xl bg-[#309C34] hover:bg-[#2a7a2c] cursor-pointer transition-all">
         <div className="flex items-center gap-2 text-sm text-white">
           <Star size={16} className="fill-white" />
           <span>{favorites.size}</span>
@@ -82,7 +83,7 @@ const Dashboard: React.FC = () => {
             <div className="flex items-center gap-3 lg:gap-4">
               <div className="flex-1 bg-gray-200 rounded-full h-2 lg:h-2.5">
                 <div
-                  className="bg-[#FC4850] h-2 lg:h-2.5 rounded-full transition-all duration-500"
+                  className="bg-[#309C34] h-2 lg:h-2.5 rounded-full transition-all duration-500"
                   style={{ width: `${progress}%` }}
                 />
               </div>

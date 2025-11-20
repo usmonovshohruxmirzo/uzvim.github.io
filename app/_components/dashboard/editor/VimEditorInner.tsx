@@ -21,7 +21,7 @@ export default function VimEditor() {
       />
       <div
         ref={statusRef}
-        className="text-sm rounded-b-lg p-2 text-white bg-[#FC4850]"
+        className="text-sm rounded-b-lg p-2 text-white bg-[#309C34]"
       />
     </div>
   )
