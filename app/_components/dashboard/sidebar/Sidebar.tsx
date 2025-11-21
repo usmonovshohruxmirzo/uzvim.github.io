@@ -2,11 +2,10 @@
 
 import React from 'react';
 import { X } from 'lucide-react';
-import concepts from '@/data/concepts';
 import content from '@/data/contents';
 import Image from 'next/image';
 import { SidebarProps } from '@/types/sidebar';
-
+import Navigation from './navigation/Navigation';
 
 const Sidebar: React.FC<SidebarProps> = ({
   selectedConcept,
@@ -51,40 +50,12 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       </div>
 
-      <nav className="flex-1 overflow-y-auto p-3 lg:p-4">
-        {concepts.map(concept => {
-          const Icon = concept.icon;
-          const isActive = selectedConcept === concept.id;
-          const conceptLessons = content[concept.id]?.lessons || [];
-          const conceptCompleted = conceptLessons.filter(l => completedLessons.has(l.id)).length;
-
-          return (
-            <button
-              key={concept.id}
-              onClick={() => {
-                setSelectedConcept(concept.id);
-                setSidebarOpen(false);
-              }}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 lg:py-3 rounded-lg mb-2 transition-all cursor-pointer ${isActive
-                ? 'bg-[#309C34] text-white'
-                : 'text-gray-700 hover:bg-green-50 hover:text-[#309C34]'
-                }`}
-            >
-              <div className={`p-2 rounded-lg ${isActive ? 'bg-white/20' : 'bg-green-100'}`}>
-                <Icon size={18} className={isActive ? 'text-white' : 'text-[#309C34]'} />
-              </div>
-              <div className="flex-1 text-left">
-                <span className="font-medium block text-sm lg:text-base">{concept.title}</span>
-                {conceptLessons.length > 0 && (
-                  <span className={`text-xs ${isActive ? 'text-white/70' : 'text-gray-400'}`}>
-                    {conceptCompleted}/{conceptLessons.length}
-                  </span>
-                )}
-              </div>
-            </button>
-          );
-        })}
-      </nav>
+      <Navigation
+        selectedConcept={selectedConcept}
+        setSelectedConcept={setSelectedConcept}
+        setSidebarOpen={setSidebarOpen}
+        completedLessons={completedLessons}
+      />
 
       <div className="p-3">
         <div className="mt-4 p-3 bg-green-50 rounded-lg">
