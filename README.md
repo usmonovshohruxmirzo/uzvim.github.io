@@ -1,1 +1,1 @@
-# Vim UZ
+# Vim/Neovim O'zbek Tilida
