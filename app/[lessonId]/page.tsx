@@ -1,7 +1,9 @@
-import Dashboard from "../_components/dashboard/Dashboard";
+'use client';
 
-const VimLearningDashboard: React.FC = () => {
-  return <Dashboard />
-};
+import dynamic from 'next/dynamic';
 
-export default VimLearningDashboard;
+const Dashboard = dynamic(() => import('@/app/_components/dashboard/Dashboard'), { ssr: false });
+
+export default function VimLearningDashboard() {
+  return <Dashboard />;
+}
