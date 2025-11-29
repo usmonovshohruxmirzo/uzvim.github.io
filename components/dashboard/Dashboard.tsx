@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import LessonCard from './LessonCard';
 import content from '@/data/contents';
 import Tips from '../sections/Tips/Tips';
 import Resources from '../sections/Resources/Resources';
@@ -9,6 +8,7 @@ import { Menu, Star } from 'lucide-react';
 import Sidebar from './sidebar/Sidebar';
 import Link from "next/link";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import Lesson from './lesson/Lesson';
 
 const Dashboard: React.FC = () => {
   const [selectedConcept, setSelectedConcept] = useState<string>('basics');
@@ -108,7 +108,7 @@ const Dashboard: React.FC = () => {
 
           <div className="space-y-4 lg:space-y-6">
             {currentContent.lessons.map((lesson, index) => (
-              <LessonCard
+              <Lesson
                 key={lesson.id}
                 lesson={lesson}
                 editor={currentContent.editor}

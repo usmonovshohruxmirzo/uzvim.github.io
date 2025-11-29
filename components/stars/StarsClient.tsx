@@ -3,9 +3,9 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import content from "@/data/contents";
 import { useMemo } from "react";
-import LessonCard from "@/app/_components/dashboard/LessonCard";
-import Tips from "@/app/_components/sections/Tips/Tips";
-import Resources from "@/app/_components/sections/Resources/Resources";
+import Lesson from "@/components/dashboard/lesson/Lesson";
+import Tips from "@/components/sections/Tips/Tips";
+import Resources from "@/components/sections/Resources/Resources";
 
 export default function StarsClient() {
   const [favorites, setFavorites] = useLocalStorage<string[]>("vim_favorites", []);
@@ -52,7 +52,7 @@ export default function StarsClient() {
 
           <div className="space-y-4 lg:space-y-6">
             {favoriteLessons.map((lesson, index) => (
-              <LessonCard
+              <Lesson
                 key={lesson.id}
                 lesson={lesson}
                 editor={lesson.editor}

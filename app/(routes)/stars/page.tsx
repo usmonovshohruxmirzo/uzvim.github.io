@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const Stars = dynamic(() => import("@/app/(routes)/stars/_components/StarsClient"), {
+const Stars = dynamic(() => import("@/components/stars/StarsClient"), {
   ssr: false,
 });
 

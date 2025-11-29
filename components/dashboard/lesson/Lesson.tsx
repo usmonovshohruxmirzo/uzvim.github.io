@@ -3,9 +3,9 @@
 import React from 'react';
 import { CheckCircle, Star, Copy, Terminal, Book, CircleQuestionMark } from 'lucide-react';
 import { LessonCardProps } from '@/types';
-import VimEditor from './editor/VimEditor';
+import VimEditor from '../editor/VimEditorInner';
 
-const LessonCard: React.FC<LessonCardProps> = ({
+const Lesson: React.FC<LessonCardProps> = ({
   lesson,
   index,
   isCompleted,
@@ -117,4 +117,4 @@ const LessonCard: React.FC<LessonCardProps> = ({
   );
 };
 
-export default LessonCard;
+export default Lesson;

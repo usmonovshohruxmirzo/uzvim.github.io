@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 
-const Dashboard = dynamic(() => import('@/app/_components/dashboard/Dashboard'), { ssr: false });
+const Dashboard = dynamic(() => import('@/components/dashboard/Dashboard'), { ssr: false });
 
 export default function VimLearningDashboard() {
   return <Dashboard />;
