@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { X } from 'lucide-react';
-import content from '@/data/contents';
-import Image from 'next/image';
-import { SidebarProps } from '@/types/sidebar';
-import Navigation from './navigation/Navigation';
+import React from "react";
+import { X } from "lucide-react";
+import content from "@/data/contents";
+import Image from "next/image";
+import { SidebarProps } from "@/types/sidebar";
+import Navigation from "./navigation/Navigation";
 
 const Sidebar: React.FC<SidebarProps> = ({
   selectedConcept,
   setSelectedConcept,
   completedLessons,
   sidebarOpen,
-  setSidebarOpen
+  setSidebarOpen,
 }) => {
   const totalLessons = Object.values(content).reduce((acc, cat) => acc + cat.lessons.length, 0);
   const completedTotal = completedLessons.size;
@@ -20,34 +20,28 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <aside
-      className={`
-        fixed lg:static inset-y-0 left-0 z-50 w-64 lg:w-72 xl:w-80 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        flex flex-col
-        lg:h-screen
-      `}
+      className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-gray-200 bg-white transition-transform duration-300 ease-in-out lg:static lg:w-72 xl:w-80 ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"} flex flex-col lg:h-screen`}
     >
-      <div className="p-4 lg:p-6 border-b border-gray-200">
+      <div className="border-b border-gray-200 p-4 lg:p-6">
         <div className="flex items-center justify-between lg:justify-start">
           <div className="flex items-center gap-3">
             <Image src="/logo.png" width={50} height={40} alt="logo" />
             <div className="flex flex-col">
-              <span className="text-md lg:text-2xl font-bold text-gray-800">
+              <span className="text-md font-bold text-gray-800 lg:text-2xl">
                 O&apos;zbekcha Vim
               </span>
-              <p className="text-xs lg:text-sm text-gray-500 mt-1">
+              <p className="mt-1 text-xs text-gray-500 lg:text-sm">
                 Bosqichma-bosqich, ko‘k choy ichib o‘rganamiz
               </p>
             </div>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg text-black cursor-pointer"
+            className="cursor-pointer rounded-lg p-2 text-black hover:bg-gray-100 lg:hidden"
           >
             <X size={20} />
           </button>
         </div>
-
       </div>
 
       <Navigation
@@ -58,18 +52,20 @@ const Sidebar: React.FC<SidebarProps> = ({
       />
 
       <div className="p-3">
-        <div className="mt-4 p-3 bg-green-50 rounded-lg">
-          <div className="flex justify-between items-center mb-1">
+        <div className="mt-4 rounded-lg bg-green-50 p-3">
+          <div className="mb-1 flex items-center justify-between">
             <span className="text-xs font-semibold text-gray-600">Umumiy progress</span>
             <span className="text-xs font-bold text-[#309C34]">{totalProgress}%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="h-2 w-full rounded-full bg-gray-200">
             <div
-              className="bg-[#309C34] h-2 rounded-full transition-all duration-500"
+              className="h-2 rounded-full bg-[#309C34] transition-all duration-500"
               style={{ width: `${totalProgress}%` }}
             />
           </div>
-          <p className="text-xs text-gray-500 mt-1">{completedTotal} / {totalLessons} dars</p>
+          <p className="mt-1 text-xs text-gray-500">
+            {completedTotal} / {totalLessons} dars
+          </p>
         </div>
       </div>
     </aside>

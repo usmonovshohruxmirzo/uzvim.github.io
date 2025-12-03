@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import content from '@/data/contents';
-import Tips from '../sections/Tips/Tips';
-import Resources from '../sections/Resources/Resources';
-import { Menu, Star } from 'lucide-react';
-import Sidebar from './sidebar/Sidebar';
+import React, { useState } from "react";
+import content from "@/data/contents";
+import Tips from "../sections/Tips/Tips";
+import Resources from "../sections/Resources/Resources";
+import { Menu, Star } from "lucide-react";
+import Sidebar from "./sidebar/Sidebar";
 import Link from "next/link";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import Lesson from './lesson/Lesson';
+import Lesson from "./lesson/Lesson";
 
 const Dashboard: React.FC = () => {
-  const [selectedConcept, setSelectedConcept] = useState<string>('basics');
+  const [selectedConcept, setSelectedConcept] = useState<string>("basics");
   const [completedLessons, setCompletedLessons] = useLocalStorage<string[]>("vim_completed", []);
   const [favorites, setFavorites] = useLocalStorage<string[]>("vim_favorites", []);
-  const [copiedCommand, setCopiedCommand] = useState<string>('');
+  const [copiedCommand, setCopiedCommand] = useState<string>("");
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const toggleLesson = (lessonId: string) => {
-    setCompletedLessons(prev => {
+    setCompletedLessons((prev) => {
       const set = new Set(prev);
       if (set.has(lessonId)) {
         set.delete(lessonId);
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
   };
 
   const toggleFavorite = (lessonId: string) => {
-    setFavorites(prev => {
+    setFavorites((prev) => {
       const set = new Set(prev);
       if (set.has(lessonId)) {
         set.delete(lessonId);
@@ -44,26 +44,24 @@ const Dashboard: React.FC = () => {
   const copyCommand = (cmd: string) => {
     navigator.clipboard.writeText(cmd);
     setCopiedCommand(cmd);
-    setTimeout(() => setCopiedCommand(''), 2000);
+    setTimeout(() => setCopiedCommand(""), 2000);
   };
 
   const currentContent = content[selectedConcept];
   const progress = currentContent
     ? Math.round(
-      (currentContent.lessons.filter(l =>
-        completedLessons.includes(l.id)
-      ).length /
-        currentContent.lessons.length) *
-      100
-    )
+        (currentContent.lessons.filter((l) => completedLessons.includes(l.id)).length /
+          currentContent.lessons.length) *
+          100,
+      )
     : 0;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-gray-50">
-      <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+    <div className="flex h-screen flex-col bg-gray-50 lg:flex-row">
+      <div className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3 lg:hidden">
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-black cursor-pointer"
+          className="cursor-pointer rounded-lg p-2 text-black transition-colors hover:bg-gray-100"
         >
           <Menu />
         </button>
@@ -71,7 +69,7 @@ const Dashboard: React.FC = () => {
         <div className="w-10" />
       </div>
 
-      <div className="p-3 border-t border-gray-200 absolute top-2 right-3 rounded-xl bg-[#309C34] hover:bg-[#2a7a2c] cursor-pointer transition-all">
+      <div className="absolute top-2 right-3 cursor-pointer rounded-xl border-t border-gray-200 bg-[#309C34] p-3 transition-all hover:bg-[#2a7a2c]">
         <Link href="/stars" className="flex items-center gap-2 text-sm text-white">
           <Star size={16} className="fill-white" />
           <span>{favorites.length}</span>
@@ -88,19 +86,19 @@ const Dashboard: React.FC = () => {
       />
 
       <main className="flex-1 overflow-y-auto">
-        <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div className="mx-auto max-w-5xl p-4 sm:p-6 lg:p-8">
           <header className="mb-6 lg:mb-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3">
+            <h2 className="mb-3 text-2xl font-bold text-gray-800 sm:text-3xl lg:text-4xl">
               {currentContent.title}
             </h2>
             <div className="flex items-center gap-3 lg:gap-4">
-              <div className="flex-1 bg-gray-200 rounded-full h-2 lg:h-2.5">
+              <div className="h-2 flex-1 rounded-full bg-gray-200 lg:h-2.5">
                 <div
-                  className="bg-[#309C34] h-2 lg:h-2.5 rounded-full transition-all duration-500"
+                  className="h-2 rounded-full bg-[#309C34] transition-all duration-500 lg:h-2.5"
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <span className="text-sm lg:text-base font-semibold text-gray-600 whitespace-nowrap">
+              <span className="text-sm font-semibold whitespace-nowrap text-gray-600 lg:text-base">
                 {progress}%
               </span>
             </div>

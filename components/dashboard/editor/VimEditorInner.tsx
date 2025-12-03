@@ -13,17 +13,13 @@ export default function VimEditor() {
   return (
     <div>
       <Editor
-        className="border border-gray-200 rounded-t-lg overflow-hidden"
+        className="overflow-hidden rounded-t-lg border border-gray-200"
         height="300px"
         defaultLanguage="javascript"
         defaultValue={`// Vim rejimi yoqildi!`}
         onMount={handleEditorDidMount}
       />
-      <div
-        ref={statusRef}
-        className="text-sm rounded-b-lg p-2 text-white bg-[#309C34]"
-      />
+      <div ref={statusRef} className="rounded-b-lg bg-[#309C34] p-2 text-sm text-white" />
     </div>
-  )
+  );
 }
-

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { CheckCircle, Star, Copy, Terminal, Book, CircleQuestionMark } from 'lucide-react';
-import { LessonCardProps } from '@/types';
-import VimEditor from '../editor/VimEditorInner';
+import React from "react";
+import { CheckCircle, Star, Copy, Terminal, Book, CircleQuestionMark } from "lucide-react";
+import { LessonCardProps } from "@/types";
+import VimEditor from "../editor/VimEditorInner";
 
 const Lesson: React.FC<LessonCardProps> = ({
   lesson,
@@ -14,46 +14,53 @@ const Lesson: React.FC<LessonCardProps> = ({
   toggleFavorite,
   copyCommand,
   copiedCommand,
-  editor
+  editor,
 }) => {
   return (
-    <article className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200 transition-all">
-      <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+    <article className="rounded-xl border border-gray-200 bg-white p-4 transition-all sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div className="flex items-start gap-3 sm:gap-4">
-          <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center font-bold shrink-0 ${isCompleted ? 'bg-[#309C34] text-white' : 'bg-gray-100 text-gray-600'
-            }`}>
-            {isCompleted ? <CheckCircle size={20} /> : <span className="text-base lg:text-lg">{index + 1}</span>}
+          <div
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-bold lg:h-12 lg:w-12 ${
+              isCompleted ? "bg-[#309C34] text-white" : "bg-gray-100 text-gray-600"
+            }`}
+          >
+            {isCompleted ? (
+              <CheckCircle size={20} />
+            ) : (
+              <span className="text-base lg:text-lg">{index + 1}</span>
+            )}
           </div>
         </div>
 
-        <div className="flex-1 min-w-0">
-          <div className="hidden sm:flex items-start justify-between mb-3">
-            <h3 className="text-xl lg:text-2xl font-semibold text-gray-800">{lesson.title}</h3>
+        <div className="min-w-0 flex-1">
+          <div className="mb-3 hidden items-start justify-between sm:flex">
+            <h3 className="text-xl font-semibold text-gray-800 lg:text-2xl">{lesson.title}</h3>
             <button
               onClick={() => toggleFavorite(lesson.id)}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors shrink-0 cursor-pointer"
+              className="shrink-0 cursor-pointer rounded-lg p-2 transition-colors hover:bg-gray-100"
             >
               <Star
                 size={20}
-                className={isFavorite ? 'fill-[#309C34] text-[#309C34]' : 'text-gray-400'}
+                className={isFavorite ? "fill-[#309C34] text-[#309C34]" : "text-gray-400"}
               />
             </button>
           </div>
 
-          <p className="text-sm lg:text-base text-gray-600 mb-4">{lesson.desc}</p>
+          <p className="mb-4 text-sm text-gray-600 lg:text-base">{lesson.desc}</p>
 
           {lesson.doc && (
-            <div className="bg-green-50 border-l-4 border-[#309C34] p-3 lg:p-4 mb-4 rounded">
+            <div className="mb-4 rounded border-l-4 border-[#309C34] bg-green-50 p-3 lg:p-4">
               <div className="flex items-start gap-2">
-                <Book size={18} className="text-[#309C34] mt-0.5 shrink-0" />
-                <p className="text-xs lg:text-sm text-gray-700 leading-relaxed">{lesson.doc}</p>
+                <Book size={18} className="mt-0.5 shrink-0 text-[#309C34]" />
+                <p className="text-xs leading-relaxed text-gray-700 lg:text-sm">{lesson.doc}</p>
               </div>
             </div>
           )}
 
           {lesson.commands && lesson.commands?.length > 0 && (
-            <div className="bg-gray-50 rounded-lg p-3 lg:p-4 mb-4">
-              <h4 className="text-sm lg:text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
+            <div className="mb-4 rounded-lg bg-gray-50 p-3 lg:p-4">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-700 lg:text-base">
                 <Terminal size={16} />
                 Buyruqlar
               </h4>
@@ -61,17 +68,17 @@ const Lesson: React.FC<LessonCardProps> = ({
                 {lesson.commands.map((command, idx) => (
                   <div
                     key={idx}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between bg-white p-3 rounded border border-gray-200 hover:border-[#309C34] transition-colors gap-2"
+                    className="flex flex-col justify-between gap-2 rounded border border-gray-200 bg-white p-3 transition-colors hover:border-[#309C34] sm:flex-row sm:items-center"
                   >
-                    <div className="flex-1 min-w-0">
-                      <code className="text-xs lg:text-sm font-mono text-[#309C34] font-semibold block break-all">
+                    <div className="min-w-0 flex-1">
+                      <code className="block font-mono text-xs font-semibold break-all text-[#309C34] lg:text-sm">
                         {command.cmd}
                       </code>
-                      <p className="text-xs text-gray-500 mt-1">{command.desc}</p>
+                      <p className="mt-1 text-xs text-gray-500">{command.desc}</p>
                     </div>
                     <button
                       onClick={() => copyCommand(command.cmd)}
-                      className="self-end sm:self-center p-2 hover:bg-green-50 rounded transition-colors shrink-0 cursor-pointer"
+                      className="shrink-0 cursor-pointer self-end rounded p-2 transition-colors hover:bg-green-50 sm:self-center"
                       title="Nusxa olish"
                       aria-label="Buyruqni nusxa olish"
                     >
@@ -87,29 +94,34 @@ const Lesson: React.FC<LessonCardProps> = ({
             </div>
           )}
 
-          {editor && <div className="bg-gray-50 rounded-lg p-3 lg:p-4 mb-4">
-            <h4 className="text-sm lg:text-base font-semibold text-gray-700 mb-3 flex items-center gap-2">
-              <button
-                type="button"
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors shrink-0 cursor-pointer"
-                onClick={() => alert("Eslatma: Ba'zi commands (:help, :w, :q) faqat real terminal Vimda ishlaydi!")}
-              >
-                <CircleQuestionMark />
-              </button>
-              Vimni sinab ko‘rishingiz mumkin, yuklamasdan!
-
-            </h4>
-            <VimEditor />
-          </div>
-          }
+          {editor && (
+            <div className="mb-4 rounded-lg bg-gray-50 p-3 lg:p-4">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-700 lg:text-base">
+                <button
+                  type="button"
+                  className="shrink-0 cursor-pointer rounded-lg p-2 transition-colors hover:bg-gray-100"
+                  onClick={() =>
+                    alert(
+                      "Eslatma: Ba'zi commands (:help, :w, :q) faqat real terminal Vimda ishlaydi!",
+                    )
+                  }
+                >
+                  <CircleQuestionMark />
+                </button>
+                Vimni sinab ko‘rishingiz mumkin, yuklamasdan!
+              </h4>
+              <VimEditor />
+            </div>
+          )}
           <button
             onClick={() => toggleLesson(lesson.id)}
-            className={`w-full sm:w-auto px-4 py-2.5 rounded-lg font-medium text-sm lg:text-base transition-all cursor-pointer ${isCompleted
-              ? 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              : 'bg-[#309C34] text-white hover:bg-[#2a7a2c]'
-              }`}
+            className={`w-full cursor-pointer rounded-lg px-4 py-2.5 text-sm font-medium transition-all sm:w-auto lg:text-base ${
+              isCompleted
+                ? "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                : "bg-[#309C34] text-white hover:bg-[#2a7a2c]"
+            }`}
           >
-            {isCompleted ? 'Bajarildi' : 'Bajarilgan deb belgilash'}
+            {isCompleted ? "Bajarildi" : "Bajarilgan deb belgilash"}
           </button>
         </div>
       </div>

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import { useEffect, useMemo } from 'react';
+import { usePathname } from "next/navigation";
+import { useEffect, useMemo } from "react";
 
-import normalize from '@/utils/normalize';
-import concepts from '@/data/concepts';
-import content from '@/data/contents';
-import NavigationItem from './NavigationItem';
+import normalize from "@/utils/normalize";
+import concepts from "@/data/concepts";
+import content from "@/data/contents";
+import NavigationItem from "./NavigationItem";
 
 interface ConceptNavProps {
   selectedConcept: string;
@@ -23,7 +23,7 @@ export default function Navigation({
   const pathname = usePathname();
 
   useEffect(() => {
-    const slug = pathname.slice(1).replace(/\/$/, '');
+    const slug = pathname.slice(1).replace(/\/$/, "");
     const matched = concepts.find((c) => normalize(c.title) === slug);
     if (matched) setSelectedConcept(matched.id);
   }, [pathname, setSelectedConcept]);

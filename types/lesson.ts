@@ -23,4 +23,4 @@ interface LessonCardProps {
   editor: boolean;
 }
 
-export type { Command, Lesson, LessonCardProps }
+export type { Command, Lesson, LessonCardProps };
