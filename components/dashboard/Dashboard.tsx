@@ -10,8 +10,10 @@ import Link from "next/link";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Lesson from "./lesson/Lesson";
 
-const Dashboard: React.FC = () => {
-  const [selectedConcept, setSelectedConcept] = useState<string>("basics");
+type DashboardProps = { initialConcept: string }
+
+const Dashboard: React.FC<DashboardProps> = ({ initialConcept }) => {
+  const [selectedConcept, setSelectedConcept] = useState<string>(initialConcept);
   const [completedLessons, setCompletedLessons] = useLocalStorage<string[]>("vim_completed", []);
   const [favorites, setFavorites] = useLocalStorage<string[]>("vim_favorites", []);
   const [copiedCommand, setCopiedCommand] = useState<string>("");
@@ -50,10 +52,10 @@ const Dashboard: React.FC = () => {
   const currentContent = content[selectedConcept];
   const progress = currentContent
     ? Math.round(
-        (currentContent.lessons.filter((l) => completedLessons.includes(l.id)).length /
-          currentContent.lessons.length) *
-          100,
-      )
+      (currentContent.lessons.filter((l) => completedLessons.includes(l.id)).length /
+        currentContent.lessons.length) *
+      100,
+    )
     : 0;
 
   return (

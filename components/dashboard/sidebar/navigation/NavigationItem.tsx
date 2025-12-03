@@ -21,17 +21,17 @@ export default function NavigationItem({
   onClick,
 }: NavigationItemProps) {
   const Icon = concept.icon;
-  const slug = normalize(concept.title);
+  const slug = normalize(concept.id);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     onClick();
-    window.history.pushState(null, "", `/${slug}`);
+    window.history.pushState(null, "", `/lesson/${slug}`);
   };
 
   return (
     <Link
-      href={`/${slug}`}
+      href={`/lesson/${slug}`}
       onClick={handleClick}
       prefetch={false}
       className={`mb-2 flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 transition-all outline-none focus-visible:ring-2 focus-visible:ring-[#309C34] focus-visible:ring-offset-2 lg:py-3 ${

@@ -30,8 +30,8 @@ export default function Navigation({
 
   const conceptMetadata = useMemo(() => {
     return concepts.map((concept) => {
-      const normalized = normalize(concept.title);
-      const isActive = pathname === `/${normalized}` || pathname === `/${normalized}/`;
+      const normalized = normalize(concept.id);
+      const isActive = pathname === `/lesson/${normalized}` || pathname === `/lesson/${normalized}/`;
       const lessons = content[concept.id]?.lessons || [];
       const completedCount = lessons.filter((l) => completedLessons.has(l.id)).length;
 
