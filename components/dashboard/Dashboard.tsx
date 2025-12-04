@@ -71,11 +71,11 @@ const Dashboard: React.FC<DashboardProps> = ({ initialConcept }) => {
         <div className="w-10" />
       </div>
 
-      <div className="absolute top-2 right-3 flex gap-2.5 z-10">
+      <div className="absolute top-2 right-3 flex gap-2.5 z-10 flex-col">
         <Link
           href="https://github.com/uzvim"
           target="_blank"
-          className="flex items-center gap-2 rounded-xl border-t border-gray-200 bg-[#309C34] p-3 px-4 transition-all hover:bg-[#2a7a2c] text-white"
+          className="flex items-center gap-2 rounded-xl border-t border-gray-200 bg-[#309C34] py-4 px-4 transition-all hover:bg-[#2a7a2c] text-white justify-center"
         >
           <Github size={16} className="fill-white" />
         </Link>
